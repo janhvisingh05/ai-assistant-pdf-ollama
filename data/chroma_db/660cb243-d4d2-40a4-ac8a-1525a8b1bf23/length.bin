@@ -1,0 +1,13 @@
+um_patches_width, -1)
+    return patched_image
+
+
+def pad_along_first_dim(
+    images: "torch.Tensor", target_length: int, pad_value: int = 0
+) -> tuple["torch.Tensor", "torch.Tensor"]:
+    """
+    Pad the array along the first dimension.
+    """
+    current_length = images.shape[1]
+    padding_length = target_length - current_length
+    pixel_mask = torch.ones((target_length,), dtype=torch.int32)
